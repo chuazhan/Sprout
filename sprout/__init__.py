@@ -1,13 +1,12 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
+from flask_restful import Api
+from flask_sqlalchemy import SQLAlchemy
 from sprout.config import Config
 from sprout.extensions import db, ma, make_celery
+from sprout.resources.case import CaseListResource, CaseResource
 from sprout.routes import ai_bp, job_bp
-
-
-# migrate = Migrate()
 
 
 def create_app():
@@ -26,6 +25,12 @@ def create_app():
     # Register blueprints and routes
     app.register_blueprint(job_bp, url_prefix="/api")
     app.register_blueprint(ai_bp, url_prefix="/api")
+
+    api = Api(app)
+
+    # Register endpoints
+    api.add_resource(CaseListResource, '/api/cases')
+    api.add_resource(CaseResource, '/api/cases/<string:case_id>')
 
     with app.app_context():
         db.create_all()

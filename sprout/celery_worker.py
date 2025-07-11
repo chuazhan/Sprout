@@ -2,7 +2,7 @@ import time
 from sprout import celery
 from sprout import create_app
 
-from sprout.extensions import db
+from sprout import db
 from sprout.models import Job
 
 

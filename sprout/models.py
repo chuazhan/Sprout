@@ -1,4 +1,4 @@
-from sprout.extensions import db
+from sprout import db
 from sqlalchemy.dialects.postgresql import JSON, VARCHAR
 import uuid
 from datetime import datetime
@@ -37,6 +37,17 @@ class Case(db.Model):
 
     def __repr__(self):
         return f"<Case {self.name}>"
+
+    def to_dict(self):
+        return {
+            "case_id": self.case_id,
+            "name": self.name,
+            "robot_id": self.robot_id,
+            "case_type": self.case_type,
+            "model_name": self.model_name,
+            "description": self.description,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+        }
 
 class Dataset(db.Model):
     __tablename__ = "datasets"

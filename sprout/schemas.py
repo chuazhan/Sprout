@@ -1,4 +1,4 @@
-from sprout.extensions import ma
+from sprout import ma
 from sprout.models import Job
 
 

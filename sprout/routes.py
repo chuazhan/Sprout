@@ -5,7 +5,7 @@ from datetime import datetime
 
 from flask import Blueprint, request, jsonify
 from minio import S3Error
-from sprout.extensions import db
+from sprout import db
 from sprout.models import Dataset, Job, Model, ModelFile, TrainingInfo
 from sprout.schemas import JobSchema
 from sprout.isolation_forest.model import (

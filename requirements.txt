@@ -2,6 +2,7 @@ flask
 flask_sqlalchemy
 flask_marshmallow
 flask_migrate
+Flask-RESTful==0.3.10
 marshmallow-sqlalchemy
 celery[redis,redisbeat]
 pytest
